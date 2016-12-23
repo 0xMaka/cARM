@@ -11,10 +11,12 @@ int main (void) {
   while(1) {
   /*set pin5 high to turn led on*/
   PORTB |= _BV(DDB5);
+
   _delay_ms(BLINK_DELAY_MS);
 
-  /*set pin5 high to turn led off*/
+  /*set pin5 low to turn led off*/
   PORTB &= ~_BV(DDB5);
+
   _delay_ms(BLINK_DELAY_MS);
 
   }
