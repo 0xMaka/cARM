@@ -13,7 +13,7 @@ int main (void) {
   DDRB |= _BV(DDB2);
 
   while(1) {
-  //et pin1 high to turn led on
+  //set pin1 high to turn led on
   PORTB |= _BV(DDB1);
   //wait
   _delay_ms(BLINK_DELAY_MS);
