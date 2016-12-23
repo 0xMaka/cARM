@@ -19,7 +19,7 @@ int main (void) {
   _delay_ms(BLINK_DELAY_MS);
   //set pin 2 high
   PORTB |= _BV(DDB2);
-  /wait
+  //wait
   _delay_ms(BLINK_DELAY_MS);
 
   //set pin1 low to turn led off.. etc
