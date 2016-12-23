@@ -5,24 +5,23 @@
 
 int main (void) {
 
-  /*set pins 1/2 of portb for output*/
+  //set pins 1/2 of portb for output
   DDRB |= _BV(DDB1);
   DDRB |= _BV(DDB2);
 
   while(1) {
-  /*set pin1 high to turn led on*/
+  //et pin1 high to turn led on
   PORTB |= _BV(DDB1);
-
+  //wait
   _delay_ms(BLINK_DELAY_MS);
-
+  //set pin 2 high
   PORTB |= _BV(DDB2);
-
+  /wait
   _delay_ms(BLINK_DELAY_MS);
 
-
-  /*set pin5 low to turn led off*/
+  //set pin1 low to turn led off.. etc
   PORTB &= ~_BV(DDB1);
-
+ 
   _delay_ms(BLINK_DELAY_MS);
   
   PORTB &= ~_BV(DDB2);
