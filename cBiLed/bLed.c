@@ -1,3 +1,6 @@
+//blinks all three colours of a bi-LED connected to pins 
+//D1/D2 on Atmega328-PU
+
 #include <avr/io.h>
 #include <util/delay.h>
 
