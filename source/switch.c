@@ -1,16 +1,19 @@
-//
 #include <avr/io.h>
+#include <util/delay.h>
 
-int main (void) {
-
-  DDRB |= (1<<5); //Set the Data Direction Register for the LED to output
-  DDRC &=~(1<<3); //Set the Data Direction Register for the switch to input
-  PORTC|= (1<<3); //Enable the pullup resistor for the switch
-   
-  while (1) {
-    if (PINC & (1<<3))
-      PORTB |= (1<<5);
-    else
-      PORTB &=~(1<<5);
+int main(void)
+{
+  DDRB |= (1<<PB0); //Nakes first pin of PORTC as Output
+  // OR DDRC = 0x01;
+  DDRD &= ~(1<<PD2);//Makes firs pin of PORTD as Input
+  // OR DDRD = 0x00; //Makes all pins of PORTD input
+  while(1) //infinite loop
+  {
+    if(PIND & (1<<PD2) == 1) //If switch is pressed
+    {
+      PORTC |= (1<<PB0); //Turns ON LED
+      _delay_ms(3000); //3 second delay
+      PORTC &= ~(1<<PB0); //Turns OFF LED
+    }
   }
 }
