@@ -7,13 +7,13 @@ void i2cWaitForComplete(void);
   //waits until the hardware sets TWINT flag
 
 void i2cStart(void);
-  //send a start codition (sets TWISTA)
+  //send a start condition (sets TWISTA)
 
 void i2cStop(void);
   //sends a stop condition (sets TWSTO)
 
 void i2cSend(uint8_t data);
-  //loads data, sends it, waiting for competion
+  //loads data, sends it, waiting for completion
 
 uint8_t i2cReadAck(void);
   //read in from slave sending ACK when done (sets TWEA)
