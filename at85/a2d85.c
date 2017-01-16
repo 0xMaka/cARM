@@ -22,7 +22,7 @@ void main (void) {
   initLed();
   while(ADCSRA |=  (1 << ADSC)) { //wait for conversion to complete
     a2dc = ADCW; //*store a2d conversion value
-    if (a2dc < 50000) {
+    if (a2dc < 5000) {
       PORTB |= (1 << PB0);
     }
     else {

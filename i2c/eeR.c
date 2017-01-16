@@ -21,24 +21,37 @@ int main (void) {
   printString("\r\n --- We're up and running, baby! --- \r\n");
 
   i2cStart();
+  printString("\r\n --- Sending Dummy EEPROM Address + Write Bit --- \r\n");
+  
+  i2cSend(eepromAddressWrite);
+  printString("\r\n --- Sending First Word Address --- \r\n");
+  i2cSend(eepromFirstWordAddress);
+  printString("\r\n --- Sending Second Word Address --- \r\n");
+  i2cSend(eepromSecondWordAddress);
+  
+  i2cStart();
   printString("\r\n --- Started Read --- \r\n");
 
   printString("\r\n --- Sending EEPROM Address + Read Bit --- \r\n");
   i2cSend(eepromAddressRead);
-  
-  
+    
   printString("\r\n --- Store High and Low Bytes --- \r\n");
   tempHighByte = i2cReadAck();
   tempLowByte = i2cReadNoAck();
 
   i2cStop();
-  
   printString("\r\n --- Done --- \r\n");
-  
-  printString("\r\n --- High Bye: ");
+
+  printString("\r\nHigh Byte: ");
   
   printByte(tempHighByte);
-
+  
+  if (tempLowByte & _BV(7)){
+    printString(".S\r\n");
+  }
+  else {
+    printString(".0\r\n");
+  }
   // ---- Loop ---- //
   while(1) {
   }

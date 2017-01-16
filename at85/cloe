@@ -5,8 +5,4 @@ MCU=attiny85
 avr-gcc -Os -DF_CPU=1000000UL -mmcu=$MCU -c -o $1.o $1.c
 avr-gcc -mmcu=$MCU $1.o -o $1
 avr-objcopy -O ihex -R .eeprom $1 $1.hex
-#### house keeping ##
-rm $1
-mv $1.o obj/
-mv $1.hex hex/
-mv $1.c src/
+

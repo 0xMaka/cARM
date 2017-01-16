@@ -8,13 +8,13 @@
 // ---- Defines ---- //
 #define eepromAddressWrite	0b10100000
 #define eepromAddressRead      	0b10100001
-#define eepromFirstWordAddress	0b00000001
-#define eepromSecondWordAddress 0b00000011
+#define eepromFirstWordAddress	0xff //0b00000000
+#define eepromSecondWordAddress 0x01 //0b00000001
 
 // ---- Functions ---- //
 int main (void) {
   uint8_t data, tempHighByte, tempLowByte;
-  data = 0b00001011; //11
+  data = 0xB; //11
   // ---- Inits ---- //
   clock_prescale_set(clock_div_1);
   initUSART();
@@ -40,8 +40,20 @@ int main (void) {
 
   printString("\r\n --- Sending Stop Bit --- \r\n");
   i2cStop();
+	
 
-  
+	//Dummy
+  i2cStart();
+
+  printString("\r\n --- Sending Dummy Address + Write Bit --- \r\n");
+  i2cSend(eepromAddressWrite);
+
+  printString("\r\n --- Sending First Word Address --- \r\n");
+  i2cSend(eepromFirstWordAddress);
+
+  printString("\r\n --- Sending Second Word Address --- \r\n");
+  i2cSend(eepromSecondWordAddress);
+ 
   i2cStart();
   printString("\r\n --- Started Read --- \r\n");
 
@@ -57,10 +69,11 @@ int main (void) {
   
   printString("\r\n --- Done --- \r\n");
   
-  printString("\r\n --- High Bye: ");
-  
+  printString("\r\n --- High Byte: ");
   printByte(tempHighByte);
-
+  printString("\r\n --- Low Byte: ");
+  printByte(tempLowByte);
+  
   // ---- Loop ---- //
   while(1) {
   }
