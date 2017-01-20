@@ -7,8 +7,8 @@
 #include "USART.h"
 
 #define PULSE_MIN 	800
-#define PULSE_MID       2300
-#define PULSE_MAX       4100
+#define PULSE_MID       2400
+#define PULSE_MAX       4000
 
 static inline uint16_t getNumber16(void);
 

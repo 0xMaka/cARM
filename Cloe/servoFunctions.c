@@ -23,7 +23,7 @@ void initPWM(void){
 
 void sweepRightLeft(void) {
   p = 4000;
-  for (i=16; i>0; i--){ 
+  for (i=14; i>0; i--){ 
     p = p - 200;
     OCR1A = ICR1-p;
     _delay_ms(50);
@@ -31,7 +31,7 @@ void sweepRightLeft(void) {
 }
 void sweepLeftRight(void) {
   p = 800;
-  for (i=16; i>0; i--){ 
+  for (i=14; i>0; i--){ 
     p = p + 200;
     OCR1A = ICR1-p;
     _delay_ms(50);
@@ -57,7 +57,7 @@ void sweepLeftCenter(void) {
 
 void scanRightLeft(void) {
   p = 4000;
-  for (i=16; i>0; i--){ 
+  for (i=15; i>0; i--){ 
     p = p - 200;
     OCR1A = ICR1-p;
     _delay_ms(500);
@@ -75,27 +75,4 @@ void scanLeftRight(void) {
 void center(void) {
   OCR1A = ICR1-2400;
 }
-
-int main(void)
-
-{
-  initPWM();
-  center();
-  while (1) {
-    OCR1A = ICR1- PULSE_MAX;
-    _delay_ms(2000);
-    sweepRightLeft();
-    _delay_ms(2000);
-    sweepLeftRight();
-    _delay_ms(2000);
-    sweepRightCenter();
-    _delay_ms(2000);
-    scanLeftRight();
-    _delay_ms(2000);
-    scanRightLeft();
-    _delay_ms(2000);
-    sweepLeftCenter();
-    _delay_ms(2000);
-    
-  }
-} 
+ 
